@@ -43,9 +43,7 @@ export function Navbar() {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-[#C9A24D] flex items-center justify-center">
-                  <span className="text-[#0B0B0B] font-bold text-xl font-['Playfair_Display']">W</span>
-                </div>
+                <img src="/assets/logowings.jpg" alt="Wings Studios Logo" className="w-10 h-10 object-contain" />
                 <span className="text-white font-['Playfair_Display'] tracking-wide hidden sm:block">
                   WINGS STUDIOS
                 </span>

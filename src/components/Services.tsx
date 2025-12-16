@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'motion/react';
+import { Media } from './Media';
 
 interface Service {
   title: string;
@@ -45,7 +46,7 @@ export function Services({ services }: ServicesProps) {
           className="text-center mb-20"
         >
           <span className="text-[#C9A24D] text-sm tracking-[0.3em] uppercase mb-4 block">Our Services</span>
-          <h2 className="text-4xl lg:text-6xl font-['Playfair_Display'] text-white">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-['Playfair_Display'] text-white">
             End-to-End Production
           </h2>
         </motion.div>
@@ -66,15 +67,19 @@ export function Services({ services }: ServicesProps) {
                 transition: 'filter 0.5s ease',
               }}
             >
-              {/* Background Image */}
+              {/* Background Media */}
               <motion.div
                 animate={{
                   scale: hoveredIndex === index ? 1.05 : 1,
                 }}
                 transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                className="absolute inset-0 bg-cover bg-center"
-                style={{ backgroundImage: `url(${service.image})` }}
-              />
+                className="absolute inset-0"
+              >
+                <Media
+                  src={service.image}
+                  className="w-full h-full object-cover"
+                />
+              </motion.div>
 
               {/* Overlay */}
               <motion.div

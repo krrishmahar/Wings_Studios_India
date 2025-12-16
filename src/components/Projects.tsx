@@ -1,6 +1,8 @@
-import { useEffect, useRef, useState } from 'react';
-import { motion } from 'motion/react';
-import CircularGallery from './CircularGallery';
+import { useEffect, useRef, useState } from "react";
+import { motion } from "motion/react";
+import CircularGallery from "./CircularGallery";
+
+type MediaType = "image" | "video";
 
 interface Project {
   id: number;
@@ -34,14 +36,32 @@ export function Projects({ projects }: ProjectsProps) {
     return () => observer.disconnect();
   }, []);
 
+  //Support image and video both
+  const VIDEO_EXTENSIONS = ["mp4", "webm", "mov", "m4v"];
+  const IMAGE_EXTENSIONS = ["jpg", "jpeg", "png", "webp", "svg", "avif", "gif"];
+
+  const getMediaType = (src: string): MediaType => {
+    const ext = src.split(".").pop()?.toLowerCase();
+    if (ext && VIDEO_EXTENSIONS.includes(ext)) return "video";
+    return "image";
+  };
+
   // Transform projects to gallery items format with title showing "Title - Category"
-  const galleryItems = projects.map(project => ({
-    image: project.image,
-    text: `${project.title} - ${project.category}`
-  }));
+  const galleryItems = projects.map((project) => {
+    const src = project.image; // rename if needed
+    return {
+      src: project.image,
+      text: `${project.title} - ${project.category}`,
+      type: getMediaType(project.image),
+    };
+  });
 
   return (
-    <section id="work" ref={ref} className="relative py-24 lg:py-32 bg-[#0B0B0B]">
+    <section
+      id="work"
+      ref={ref}
+      className="relative py-24 lg:py-32 bg-[#0B0B0B]"
+    >
       <div className="max-w-[1800px] mx-auto px-6 lg:px-12">
         {/* Section Header */}
         <motion.div
@@ -50,8 +70,10 @@ export function Projects({ projects }: ProjectsProps) {
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
           className="text-center mb-16"
         >
-          <span className="text-[#C9A24D] text-sm tracking-[0.3em] uppercase mb-4 block">Our Work</span>
-          <h2 className="text-4xl lg:text-6xl font-['Playfair_Display'] text-white">
+          <span className="text-[#C9A24D] text-sm tracking-[0.3em] uppercase mb-4 block">
+            Our Work
+          </span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-['Playfair_Display'] text-white">
             Selected Projects
           </h2>
         </motion.div>
@@ -62,9 +84,9 @@ export function Projects({ projects }: ProjectsProps) {
           animate={inView ? { opacity: 1 } : {}}
           transition={{ duration: 1.2, delay: 0.3 }}
           className="relative"
-          style={{ height: '600px' }}
+          style={{ height: "600px" }}
         >
-          <CircularGallery 
+          <CircularGallery
             items={galleryItems}
             bend={3}
             textColor="#C9A24D"

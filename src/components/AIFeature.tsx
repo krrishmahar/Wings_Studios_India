@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'motion/react';
 import { Sparkles, Zap, Eye } from 'lucide-react';
+import { Media } from './Media';
 
 interface AIFeatureProps {
   image: string;
@@ -81,9 +82,12 @@ export function AIFeature({ image }: AIFeatureProps) {
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={inView ? { scale: 1, opacity: 1 } : {}}
                 transition={{ duration: 1.2, delay: 0.4 }}
-                className="relative aspect-[4/3] bg-cover bg-center overflow-hidden"
-                style={{ backgroundImage: `url(${image})` }}
+                className="relative aspect-[4/3] overflow-hidden"
               >
+                <Media
+                  src={image}
+                  className="w-full h-full object-cover"
+                />
                 {/* Gradient Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-br from-[#C9A24D]/30 via-transparent to-[#0B0B0B]/50" />
               </motion.div>
@@ -125,7 +129,7 @@ export function AIFeature({ image }: AIFeatureProps) {
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 1, delay: 0.3 }}
-              className="text-4xl lg:text-6xl font-['Playfair_Display'] text-white mb-8 leading-tight"
+              className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-['Playfair_Display'] text-white mb-8 leading-tight"
             >
               AI-Assisted Filmmaking
             </motion.h2>

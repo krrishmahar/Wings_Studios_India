@@ -2,12 +2,13 @@ import { useEffect, useRef } from 'react';
 import { motion } from 'motion/react';
 import { ChevronDown } from 'lucide-react';
 import { LoopingSplitText } from './LoopingSplitText';
+import { Media } from './Media';
 
 interface HeroProps {
-  backgroundImage: string;
+  backgroundVideo: string;
 }
 
-export function Hero({ backgroundImage }: HeroProps) {
+export function Hero({ backgroundVideo }: HeroProps) {
   const videoRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -28,16 +29,16 @@ export function Hero({ backgroundImage }: HeroProps) {
 
   return (
     <section className="relative h-screen w-full overflow-hidden">
-      {/* Background Image with Parallax */}
+      {/* Background Video with Parallax */}
       <div
         ref={videoRef}
-        className="absolute inset-0 w-full h-full transition-transform duration-100 ease-out"
-        style={{
-          backgroundImage: `url(${backgroundImage})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      />
+        className="absolute inset-0 transition-transform duration-100 ease-out"
+      >
+        <Media
+          src={backgroundVideo}
+          className="w-full h-full object-contain"
+        />
+      </div>
 
       {/* Dark Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-[#0B0B0B]" />
@@ -54,15 +55,13 @@ export function Hero({ backgroundImage }: HeroProps) {
           transition={{ duration: 1.2, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
           className="mb-8"
         >
-          <div className="w-20 h-20 lg:w-24 lg:h-24 bg-[#C9A24D] flex items-center justify-center mx-auto mb-6">
-            <span className="text-[#0B0B0B] font-bold text-4xl lg:text-5xl font-['Playfair_Display']">W</span>
-          </div>
+          <img src="/assets/logowings.jpg" alt="Wings Studios Logo" className="w-20 h-20 lg:w-24 lg:h-24 object-contain mx-auto mb-6" />
         </motion.div>
 
         {/* Main Headline with Looping SplitText Animation */}
         <LoopingSplitText
           text="WINGS STUDIOS INDIA"
-          className="text-5xl sm:text-6xl lg:text-8xl font-['Playfair_Display'] text-white mb-6 tracking-tight max-w-5xl"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-['Playfair_Display'] text-white mb-6 tracking-tight max-w-5xl"
           repeatDelay={5}
         />
 

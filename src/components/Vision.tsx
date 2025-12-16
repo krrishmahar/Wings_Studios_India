@@ -70,7 +70,7 @@ export function Vision() {
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 1, delay: 0.4 }}
-            className="text-4xl sm:text-5xl lg:text-7xl font-['Playfair_Display'] text-white mb-8 leading-tight"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-['Playfair_Display'] text-white mb-8 leading-tight"
           >
             "To build a future-ready creative studio blending cinematic tradition with emerging technology."
           </motion.h2>

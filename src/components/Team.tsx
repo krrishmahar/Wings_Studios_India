@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
-import { motion } from 'motion/react';
+import { useEffect, useRef, useState } from "react";
+import { motion } from "motion/react";
 
 interface TeamMember {
   name: string;
@@ -42,12 +42,10 @@ export function Team({ founder, members }: TeamProps) {
       className="relative py-24 lg:py-32 bg-gradient-to-b from-[#0B0B0B] to-[#121212]"
     >
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
-
         {/* ===================== */}
         {/* FOUNDER SECTION */}
         {/* ===================== */}
         <div className="grid lg:grid-cols-2 gap-16 items-start mb-32">
-          
           {/* Left: Text */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -72,9 +70,9 @@ export function Team({ founder, members }: TeamProps) {
             initial={{ opacity: 0, y: 40 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="group relative max-w-md ml-auto max-h-[420px]"
+            className="group relative  ml-auto "
           >
-            <div className="relative aspect-[4/3] max-h-[420px] overflow-hidden">
+            <div className="relative aspect-[4/3] overflow-hidden">
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
@@ -156,7 +154,7 @@ export function Team({ founder, members }: TeamProps) {
                 </p>
                 <motion.div
                   initial={{ width: 0 }}
-                  animate={inView ? { width: '40px' } : {}}
+                  animate={inView ? { width: "40px" } : {}}
                   transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
                   className="h-[1px] bg-[#C9A24D] mx-auto mt-4"
                 />

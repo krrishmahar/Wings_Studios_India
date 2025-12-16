@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'motion/react';
+import { Media } from './Media';
 
 interface AboutProps {
   image: string;
@@ -39,15 +40,15 @@ export function About({ image }: AboutProps) {
       const timer = setInterval(() => {
         step++;
         const progress = step / steps;
-        setCount1(Math.floor(120 * progress));
-        setCount2(Math.floor(30 * progress));
+        setCount1(Math.floor(20 * progress));
+        setCount2(Math.floor(20 * progress));
         setCount3(Math.floor(2015 + (2015 - 2015) * progress));
         
         if (step >= steps) {
           clearInterval(timer);
-          setCount1(120);
+          setCount1(50);
           setCount2(30);
-          setCount3(2015);
+          setCount3(2020);
         }
       }, interval);
 
@@ -78,7 +79,7 @@ export function About({ image }: AboutProps) {
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 1, delay: 0.3 }}
-              className="text-4xl lg:text-6xl font-['Playfair_Display'] text-white mb-8 leading-tight"
+              className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-['Playfair_Display'] text-white mb-8 leading-tight"
             >
               A Fully Integrated Film Studio
             </motion.h2>
@@ -109,7 +110,7 @@ export function About({ image }: AboutProps) {
               className="mt-12 grid grid-cols-3 gap-8"
             >
               <div className="border-l-2 border-[#C9A24D] pl-4">
-                <div className="text-4xl lg:text-5xl font-['Playfair_Display'] text-[#C9A24D] mb-2">
+                <div className="text-3xl md:text-4xl lg:text-5xl font-['Playfair_Display'] text-[#C9A24D] mb-2">
                   {count1}+
                 </div>
                 <div className="text-sm text-[#999999] uppercase tracking-wide">Projects</div>
@@ -121,7 +122,7 @@ export function About({ image }: AboutProps) {
                 <div className="text-sm text-[#999999] uppercase tracking-wide">Team Members</div>
               </div>
               <div className="border-l-2 border-[#C9A24D] pl-4">
-                <div className="text-4xl lg:text-5xl font-['Playfair_Display'] text-[#C9A24D] mb-2">
+                <div className="text-3xl md:text-4xl lg:text-5xl font-['Playfair_Display'] text-[#C9A24D] mb-2">
                   {count3}
                 </div>
                 <div className="text-sm text-[#999999] uppercase tracking-wide">Established</div>
@@ -141,9 +142,13 @@ export function About({ image }: AboutProps) {
                 initial={{ scale: 1.2 }}
                 animate={inView ? { scale: 1 } : {}}
                 transition={{ duration: 1.5, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                className="aspect-[4/5] bg-cover bg-center"
-                style={{ backgroundImage: `url(${image})` }}
-              />
+                className="aspect-[4/5]"
+              >
+                <Media
+                  src={image}
+                  className="w-full h-full object-cover"
+                />
+              </motion.div>
               {/* Gradient Overlay */}
               <div className="absolute inset-0 bg-gradient-to-tr from-[#C9A24D]/20 via-transparent to-transparent" />
               {/* Border Frame */}

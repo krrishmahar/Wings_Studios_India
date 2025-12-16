@@ -50,7 +50,7 @@ export function Contact() {
           className="text-center mb-20"
         >
           <span className="text-[#C9A24D] text-sm tracking-[0.3em] uppercase mb-4 block">Get In Touch</span>
-          <h2 className="text-4xl lg:text-6xl font-['Playfair_Display'] text-white">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-['Playfair_Display'] text-white">
             Let's Create Together
           </h2>
         </motion.div>
@@ -157,7 +157,7 @@ export function Contact() {
                 <div>
                   <h4 className="text-white mb-1">Email</h4>
                   <a href="mailto:contact@wingsstudios.in" className="text-[#999999] hover:text-[#C9A24D] transition-colors">
-                    contact@wingsstudios.in
+                    wingsstudiosindia@gmail.com
                   </a>
                 </div>
               </motion.div>
@@ -174,7 +174,7 @@ export function Contact() {
                 <div>
                   <h4 className="text-white mb-1">Phone</h4>
                   <a href="tel:+912212345678" className="text-[#999999] hover:text-[#C9A24D] transition-colors">
-                    +91 22 1234 5678
+                    +91 99678929399
                   </a>
                 </div>
               </motion.div>
@@ -191,9 +191,11 @@ export function Contact() {
                 <div>
                   <h4 className="text-white mb-1">Location</h4>
                   <p className="text-[#999999]">
-                    Andheri West<br />
-                    Mumbai, Maharashtra 400053<br />
-                    India
+                    201  2nd Floor 
+                    ACME Plaza No 2
+                    Opp. Sangam Cinema 
+                    Andheri Kurla Road 
+                    Andheri East
                   </p>
                 </div>
               </motion.div>
