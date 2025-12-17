@@ -72,7 +72,7 @@ export function Team({ founder, members }: TeamProps) {
             transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             className="group relative  ml-auto "
           >
-            <div className="relative aspect-[4/3] overflow-hidden">
+            <div className="relative aspect-[4/3] overflow-hidden max-w-sm">
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
@@ -132,7 +132,7 @@ export function Team({ founder, members }: TeamProps) {
               className="group"
             >
               <div className="relative overflow-hidden mb-6">
-                <div className="relative aspect-[3/4] overflow-hidden">
+                <div className="relative aspect-[3/4] overflow-hidden max-w-xs">
                   <motion.div
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}

@@ -13,16 +13,23 @@ export function Hero({ backgroundVideo }: HeroProps) {
 
   useEffect(() => {
     if (videoRef.current) {
-      // Ken Burns zoom effect
+      // Ken Burns zoom effect with throttling
+      let ticking = false;
       const handleScroll = () => {
-        const scrolled = window.scrollY;
-        const maxScroll = window.innerHeight;
-        const scale = 1 + (scrolled / maxScroll) * 0.1;
-        if (videoRef.current) {
-          videoRef.current.style.transform = `scale(${Math.min(scale, 1.15)})`;
+        if (!ticking) {
+          requestAnimationFrame(() => {
+            const scrolled = window.scrollY;
+            const maxScroll = window.innerHeight;
+            const scale = 1 + (scrolled / maxScroll) * 0.1;
+            if (videoRef.current) {
+              videoRef.current.style.transform = `scale(${Math.min(scale, 1.15)})`;
+            }
+            ticking = false;
+          });
+          ticking = true;
         }
       };
-      window.addEventListener('scroll', handleScroll);
+      window.addEventListener('scroll', handleScroll, { passive: true });
       return () => window.removeEventListener('scroll', handleScroll);
     }
   }, []);
@@ -55,7 +62,7 @@ export function Hero({ backgroundVideo }: HeroProps) {
           transition={{ duration: 1.2, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
           className="mb-8"
         >
-          <img src="/assets/logowings.jpg" alt="Wings Studios Logo" className="w-20 h-20 lg:w-24 lg:h-24 object-contain mx-auto mb-6" />
+          <img src="/assets/logowings.jpg" alt="Wings Studios Logo" className="w-20 h-20 lg:w-24 lg:h-24 object-contain mx-auto mb-6" loading="lazy" />
         </motion.div>
 
         {/* Main Headline with Looping SplitText Animation */}
@@ -71,6 +78,7 @@ export function Hero({ backgroundVideo }: HeroProps) {
           animate={{ width: '120px' }}
           transition={{ duration: 0.8, delay: 1, ease: [0.22, 1, 0.36, 1] }}
           className="h-[1px] bg-[#C9A24D] mb-6"
+          style={{ willChange: 'width' }}
         />
 
         {/* Tagline */}
@@ -80,7 +88,7 @@ export function Hero({ backgroundVideo }: HeroProps) {
           transition={{ duration: 1, delay: 1.2, ease: [0.22, 1, 0.36, 1] }}
           className="text-xl lg:text-3xl text-[#F5F5F5] mb-3 font-light tracking-wide max-w-3xl"
         >
-          Cinematic storytelling. Engineered for the future.
+         Crafted by Vision. Powered by AI.
         </motion.p>
 
         {/* Subtitle */}
